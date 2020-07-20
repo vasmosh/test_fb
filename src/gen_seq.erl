@@ -42,7 +42,6 @@
 -spec(start_link([]) ->
   {ok, Pid :: pid()} | ignore | {error, Reason :: term()}).
 start_link(MAX_NUM) ->
-  io:format("MAX_NUM sfd  ~p~n",[MAX_NUM]),
   gen_server:start_link({local, ?SERVER}, ?MODULE, [MAX_NUM], []).
 
 %%%===================================================================
@@ -64,7 +63,6 @@ start_link(MAX_NUM) ->
   {ok, State :: #state{}} | {ok, State :: #state{}, timeout() | hibernate} |
   {stop, Reason :: term()} | ignore).
 init([MAX_NUM]) ->
-  io:format("Start module ~p ~p~n", [?MODULE, MAX_NUM]),
   utils_fb:start_gen(?TIMESTEP, self(),<<"need_gen">>),
   {ok, #state{max_num = MAX_NUM}}.
 

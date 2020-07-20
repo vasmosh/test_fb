@@ -92,7 +92,7 @@ clear_list() ->
   {stop, Reason :: term()} | ignore).
 init([{Redis_Host, Redis_Port, Redis_DB, Queue_Key, Set_Key}=Data]) ->
   case eredis:start_link(Redis_Host, Redis_Port, Redis_DB) of
-    {ok, Pid} -> io:format("Link OK ~n"), {ok, #state{redis_pid = Pid, queue = Queue_Key, key=Set_Key}};
+    {ok, Pid} -> io:format("BD Start OK ~n"), {ok, #state{redis_pid = Pid, queue = Queue_Key, key=Set_Key}};
     _ -> io:format("Can't link to REDIS host ~p port ~p DB ~p ~n",[Redis_Host, Redis_Port, Redis_DB]),{ok, #state{}}
   end.
 
